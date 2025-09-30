@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>2024 UMN BBE1002</title>
+  <link type="text/css" rel="stylesheet" href="https://alexporf.chiploop.net/css/nav.css" />
+  <link type="text/css" rel="stylesheet" href="https://alexporf.chiploop.net/css/base.css" />
+  <link type="text/css" rel="stylesheet" href="https://alexporf.chiploop.net/css/math.css" />
+  <link type="text/css" rel="stylesheet" href="https://alexporf.chiploop.net/font/font.css" />
+  <script>
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    async function myFunction() {
+      await sleep(200);
+      nav.style.visibility = 'visible'
+      nav.style.height = '7%'
+      nav.style.opacity = 1
+      main.style.visibility = 'visible'
+      main.style.paddingTop = '7vh'
+      main.style.opacity = 1
+    }
+    onload = myFunction;
+  </script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [
+          ["$", "$"],
+          ["\\(", "\\)"],
+        ],
+      },
+      svg: {
+        fontCache: "global",
+      },
+    };
+
+    function anchorJump(which) {
+      let id = "#" + which; // 给id加上井号
+      // 给对应dom滚动到对应锚点，使之出现在视图中
+      document.querySelector(id).scrollIntoView({
+        behavior: "smooth", // 定义过渡动画 instant立刻跳过去 smooth平滑过渡过去
+        block: "center", // 定义垂直滚动方向的对齐 start顶部（尽可能）  center中间（尽可能）  end（底部）
+        inline: "center", // 定义水平滚动方向的对齐
+      });
+    }
+    function toTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+        block: "start",
+        inline: "center",
+      })
+    }
+  </script>
+  <script src="https://alexporf.chiploop.net/js/jquery-3.6.0.min.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <link rel="shortcut icon" href="https://alexporf.chiploop.net/images/chiploop tech-logo512.png" width="10"
+    height="10" />
+  <style>
+    .nav-maindiv-title {
+      height: 0;
+      transition: opacity 0.6s, visibility 0.2s, all 0.5s;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .main {
+      padding-top: 0;
+      transition: opacity 0.6s, visibility 0.2s, all 0.5s;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    img {
+      min-width: 0;
+      max-height: 30vh;
+      flex-shrink: 1;
+      flex-grow: 1;
+      min-height: 0;
+      object-fit: contain;
+    }
+
+    p {
+      font-size: 1.2rem;
+      font-family: "Times New Roman", Times, serif;
+      text-indent: 2.4rem;
+    }
+
+    .QuoLink {
+      background-color: transparent;
+      text-decoration: none;
+      font-family: SmileySans;
+      text-align: center;
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: black;
+      background-image: url(https://alexporf.chiploop.net/images/external-link.png);
+      background-position: center right;
+      background-repeat: no-repeat;
+      padding-right: 1.2rem;
+      background-size: 1.2rem;
+      display: inline;
+    }
+
+    .QuoLink:hover {
+      cursor: pointer;
+      color: #315efc;
+    }
+
+    .goTop {
+      font-family: SmileySans;
+      width: 0px;
+      height: 0px;
+      background-color: transparent;
+      font-size: 10px;
+      text-align: center;
+      line-height: 25px;
+      color: rgba(31, 31, 31, 0.90);
+
+      position: fixed;
+      bottom: 2vh;
+      right: 2vw;
+
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.6s, visibility 0.2s, all 0.5s;
+
+    }
+
+    .goTop:hover {
+      cursor: pointer;
+    }
+
+    .tb {
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .tb>tbody>tr>td {
+      border-top: 1px solid #987cb9;
+    }
+  </style>
+</head>
+
+<body style="background-color: RGB(242, 251, 255); text-align: center">
+  <div class="all">
+    <div class="goTop" onclick="toTop()">
+      <svg t="1730677339228" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        p-id="1480" width="100%" height="100%">
+        <path
+          d="M76.8 480L499.2 57.6c6.4-6.4 19.2-6.4 25.6 0L947.2 480c6.4 6.4 12.8 6.4 19.2 6.4 6.4 0 12.8 0 19.2-6.4 12.8-12.8 12.8-25.6 0-38.4L556.8 19.2c-25.6-25.6-76.8-25.6-102.4 0L32 441.6c-6.4 6.4-6.4 25.6 0 38.4s32 12.8 44.8 0zM32 672h108.8v345.6H192V672h108.8v-38.4H32zM499.2 627.2c-57.6 0-102.4 19.2-134.4 57.6-32 38.4-51.2 89.6-51.2 147.2 0 57.6 19.2 102.4 51.2 140.8 32 32 76.8 51.2 128 51.2 57.6 0 102.4-19.2 134.4-57.6s51.2-89.6 51.2-147.2c0-57.6-19.2-102.4-51.2-140.8-25.6-38.4-70.4-51.2-128-51.2z m96 313.6c-25.6 25.6-57.6 38.4-96 38.4s-70.4-12.8-96-44.8c-25.6-25.6-38.4-64-38.4-115.2 0-44.8 12.8-83.2 38.4-115.2 25.6-25.6 57.6-44.8 96-44.8s70.4 12.8 96 38.4c25.6 25.6 32 64 32 115.2 0 64-12.8 96-32 128zM960 659.2c-25.6-19.2-57.6-32-96-32H755.2v384h51.2V864h51.2c38.4 0 76.8-12.8 102.4-32 25.6-25.6 38.4-51.2 38.4-89.6 0-32-12.8-64-38.4-83.2z m-38.4 147.2c-12.8 12.8-38.4 19.2-70.4 19.2h-44.8V672h51.2c57.6 0 89.6 25.6 89.6 76.8 0 25.6-12.8 44.8-25.6 57.6z"
+          p-id="1481"></path>
+      </svg>
+    </div>
+    <script>
+      var goTop = document.querySelector('.goTop')
+      window.onscroll = function () {
+        var height = document.documentElement.scrollTop || document.body.scrollTop
+        if (height >= 300) {
+          goTop.style.visibility = 'visible'
+          goTop.style.height = '50px'
+          goTop.style.width = '50px'
+          goTop.style.opacity = 1
+        } else {
+          goTop.style.height = '0px'
+          goTop.style.width = '0px'
+          goTop.style.visibility = 'hidden'
+          goTop.style.opacity = 0
+        }
+      }
+    </script>
+    <div id="header"></div>
+    <div id="main" class="main">
+      <div style="text-align: left; width: 80%; margin-left: 10%;">
+        <h2 style="font-family: SmileySans">Biorenewable Resources</h2>
+        <hr style="text-align: center" width="100%" color="#987cb9" size="3" />
+        <h1 style="
+              text-align: center;
+              font-family: SmileySans;
+              margin-top: 2rem;
+              margin-bottom: 2rem;
+            ">
+          Wood: the Pluses, the Minuses, and the Neutrals
+        </h1>
+        <p style="margin-bottom: 0.5rem">
+          The history of using wood started long ago when nature fell down the wood branch.
+        </p>
+        <p style="margin-bottom: 0.5rem">
+          Modern wood use is almost always based on different lumber which comes from the forest and timber industry.
+          The tree from which the wood is taken determines how it will be used from the moment it is selected. The
+          difference in species between softwoods and hardwoods determines what kind of wood is suitable for production
+          in what region. Hardwoods, obtained from the trees of dicotyledonous angiosperms or flowering plants, are hard
+          and complex, unevenly textured, and slow-growing, but are well suited for use in places such as furniture.
+          Softwoods, obtained from monocotyledonous angiosperms or non-flowering trees, are soft and light, faster
+          growing, easily available, and inexpensive.
+          <a class="QuoLink" onclick="anchorJump('HvsS')"><i>(Hardwood vs
+              Softwood)</i></a>
+        </p>
+        <table class="tb" cellpadding="0" cellspacing="0">
+          <thead>
+            <tr>
+              <th style="width: 20%;">Tree Species</th>
+              <th style="width: 80%;">Uses</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Aspen</td>
+              <td>Woodchips, particle board, plywood, shingles, dimension lumber. Specialty uses: sauna benches and
+                playgrounds.</td>
+            </tr>
+            <tr>
+              <td>Basswood</td>
+              <td>Hand carving, making crafts, veneer for plywood, furniture, pulpwood.</td>
+            </tr>
+            <tr>
+              <td>Douglas Fir</td>
+              <td>Lumber and plywood</td>
+            </tr>
+            <tr>
+              <td>Lodgepole Pine</td>
+              <td>Framing lumber, plywood, and railroad ties</td>
+            </tr>
+            <tr>
+              <td>Northern Red Oak</td>
+              <td>Flooring, furniture, millwork, crossties, mining timbers, veneer, pulpwood. Generally, it is the most
+                important hardwood lumber species in the US.</td>
+            </tr>
+            <tr>
+              <td>Ponderosa Pine</td>
+              <td>Lumber, plywood, doors, furniture, etc. It is considered the most commercially important western pine.
+              </td>
+            </tr>
+            <tr>
+              <td>Sugar Maple</td>
+              <td>Flooring, furniture, millwork, veneer, and pulpwood. Also maple syrup!</td>
+            </tr>
+            <tr>
+              <td>Sycamore</td>
+              <td>Furniture parts, millwork, veneer in plywood, pulpwood, and biomass (e.g. for bioenergy and biofuels).
+                Specialty products: butcher block.</td>
+            </tr>
+            <tr>
+              <td>Yellow Birch</td>
+              <td>Lumber and veneer in making furniture, plywood, cabinets, boxes, and interior doors</td>
+            </tr>
+            <tr>
+              <td>Yellow Poplar</td>
+              <td>Crates, toys, furniture, veneer plywood, pulpwood, etc. Extremely versatile.</td>
+            </tr>
+          </tbody>
+        </table>
+        </br>
+        <div style="
+              width: 100%;
+              display: flex;
+              flex-grow: 1;
+              align-items: center;
+              justify-content: center;
+              max-width: 100%;
+            ">
+          <img src="https://cdn.pixabay.com/photo/2013/06/26/20/14/leaves-141581_1280.jpg" />
+          <img src="https://cdn.pixabay.com/photo/2016/11/23/15/07/close-up-1853415_1280.jpg" />
+          <img src="https://cdn.pixabay.com/photo/2016/01/29/20/45/giant-palm-1168651_1280.jpg" />
+        </div>
+        <p style="margin-bottom: 0.5rem">
+          In a sawmill, trees are cut into lumber, and different milling methods give the lumber different uses.<a
+            class="QuoLink" onclick="anchorJump('lesson13')"><i>(lesson 13)</i></a> For example, in the case of a good,
+          thick enough tree, cutting a wide piece of the center in its entirety for use
+          in large lumber reduces structural imperfections in the gluing process.</p>
+        <div style="
+              width: 100%;
+              display: flex;
+              flex-grow: 1;
+              align-items: center;
+              justify-content: center;
+            ">
+          <img src="https://i.pinimg.com/originals/fc/9a/bc/fc9abc5014d57227b932fa974fa08141.jpg" />
+          <img src="https://cdn.pixabay.com/photo/2013/09/28/08/39/wood-187650_1280.jpg" />
+          <img src="https://cdn.pixabay.com/photo/2014/09/22/11/48/wood-456195_960_720.jpg" />
+        </div>
+        <p style="margin-bottom: 0.5rem">
+          Although wood can be milled in different ways to obtain substrates of different sizes, wood structures that
+          are particularly large or delicate cannot be obtained in these ways. This is why people think of using
+          engineering methods to manipulate wood materials to obtain easy-to-use structural materials. The wood chips
+          and shavings produced in the manufacture of wood could only be used as fuel for combustion in the past, but
+          this combustion immediately releases the carbon stored in the wood into the air, which defeats one of the
+          original purposes of using wood construction: to store carbon.</p>
+        <div style="
+                width: 100%;
+                display: flex;
+                flex-grow: 1;
+                align-items: center;
+                justify-content: center;
+              ">
+          <img src="https://canvas.umn.edu/courses/459407/files/44316910/download?wrap=1" />
+          <img src="https://cdn.pixabay.com/photo/2014/09/21/17/36/pressboard-455307_960_720.jpg" />
+          <img src="https://cdn.pixabay.com/photo/2014/05/18/02/43/parquet-floor-346774_640.jpg" />
+        </div>
+        <p style="margin-bottom: 0.5rem">
+          By gluing these small pieces of wood or chips together you can make fiberboard, wood-plastic composites,
+          engineered wood flooring, and other wood paneling materials. These small pieces of wood glued together without
+          being reinforced with plastic materials are inexpensive and low-strength, making them ideal for use in
+          applications where strength is not a requirement, but cost is of great concern. Plastic-reinforced planks can
+          be stronger than regular planks. Reinforced with different arrangements of glues, the boards can withstand
+          loads in different directions, which allows them to be used for construction or even as a substitute for
+          reinforced concrete. The Mjøstårnet building, for example, is a completely wooden building that reaches a
+          height of more than 80 meters, which is taller than a typical apartment.</p>
+        <div style="
+                width: 100%;
+                display: flex;
+                flex-grow: 1;
+                align-items: center;
+                justify-content: center;
+              ">
+          <img
+            src="https://images.adsttc.com/media/images/5e54/35f8/6ee6/7e4e/7800/00cb/slideshow/Mj%C3%B8st%C3%A5rnet_08_Voll_Arkitekter_AS___Ricardo_Foto.jpg?1582577133" />
+          <img
+            src="https://images.adsttc.com/media/images/5e54/36a0/6ee6/7e4e/7800/00cf/slideshow/Mj%C3%B8st%C3%A5rnet_13_Woodify.jpg?1582577300" />
+        </div>
+        <p style="margin-bottom: 0.5rem">
+          It may seem that wood is a good material for construction and that it stores carbon emissions. However, this
+          carbon does not last forever, as trees that die naturally decompose in about 10-20 years and release most of
+          the stored carbon back into the air, or over hundreds of years if used for construction or furniture without
+          treatment <a class="QuoLink" onclick="anchorJump('lesson17')"><i>(lesson 17)</i></a>. It is only a matter of
+          time before these carbon emissions are eventually released into
+          the air. So it's very similar to a loan, these will eventually need to be repaid, it's just a matter of when.
+          It is just a matter of when it is repaid, except that it can be “repaid” by growing plants, catalyzing the
+          reaction of carbon dioxide, and using the carbon dioxide to make starch. As long as the amount of “repayment”
+          is equal to or greater than the amount of the “loan” in a cycle, the carbon can always be neutralized.</p>
+        <div style="
+                width: 100%;
+                display: flex;
+                flex-grow: 1;
+                align-items: center;
+                justify-content: center;
+              ">
+          <img src="https://cdn.pixabay.com/photo/2020/02/13/20/37/pollution-4846741_1280.jpg" />
+          <img src="https://cdn.pixabay.com/photo/2018/10/21/13/11/spain-3762881_960_720.jpg" />
+          <img src="https://cdn.pixabay.com/photo/2018/02/08/11/22/co2-3139225_1280.jpg" />
+        </div>
+        <p style="margin-bottom: 0.5rem">
+          The global carbon neutrality process has moved from goal-setting to the era of implementation. <a
+            class="QuoLink" onclick="anchorJump('Tsinghua')"><i>(Tsinghua)</i></a>
+          The use of bio-recyclable materials as well as carbon-absorbing technologies can accelerate the goal of
+          carbon neutrality. We can see from the <a class="QuoLink" onclick="anchorJump('fao2017')"><i>FAO2017</i></a>
+          report that the amount of paper used is huge. If the paper
+          needs to be produced in a way that makes it easy to use and in the right color it requires a lot of
+          chemicals for bleaching, dyeing, dissolving, etc. These substances can produce a lot of carbon. These
+          substances can produce large amounts of carbon emissions. The use of certain paper, such as for courier
+          boxes, does not require as high a standard of paper, and these points may be a way to reduce emissions from
+          the paper industry. Of course, for the promotion of paperless office learning can also reduce the use and
+          manufacture of paper. But all of these actions and measures need to be tackled in a concerted global effort.
+        </p>
+        <h2 style="font-family: SmileySans">Reference:</h2>
+        <hr style="text-align: center" width="100%" color="#987cb9" size="3" />
+        <h4 style="margin-bottom: 0.5rem" id="lesson13">
+          Lesson 13, <i>Forest to Lumber</i>, BBE 1002, UMN
+        </h4>
+        <h4 style="margin-bottom: 0.5rem" id="lesson17">
+          Lesson 17, <i>Is Wood Good?</i>, BBE 1002, UMN
+        </h4>
+        <h4 style="margin-bottom: 0.5rem" id="Tsinghua">
+          Tsinghua University
+          <i>Annual progress report on global carbon neutrality 2024</i>
+          <a target="_blank" class="QuoLink"
+            href="https://www.cntracker.tsinghua.edu.cn/report/">https://www.cntracker.tsinghua.edu.cn/report/</a>
+        </h4>
+        <h4 style="margin-bottom: 0.5rem" id="fao2017">
+          Food and Agriculture Organization of the United Nations.
+          <i>FOREST PRODUCTS 2017 </i>
+          <a target="_blank" class="QuoLink"
+            href="https://www.paperonweb.com/FAO2017.Paper.pdf">https://www.paperonweb.com/FAO2017.Paper.pdf</a>
+        </h4>
+        <h4 style="margin-bottom: 0.5rem" id="HvsS">
+          Piyush Yadav
+          <i>Hardwood vs Softwood: Difference and Comparison </i>
+          <a target="_blank" class="QuoLink"
+            href="https://askanydifference.com/difference-between-hardwood-and-softwood/">https://askanydifference.com/difference-between-hardwood-and-softwood/</a>
+        </h4>
+        <h4 style="margin-bottom: 0.5rem">
+          images
+          <a target="_blank" class="QuoLink" href="https://pixabay.com/">https://pixabay.com/</a>
+        </h4>
+      </div>
+      <div style="height: 50vh;width: 100%;"></div>
+    </div>
+
+  </div>
+  </div>
+  </div>
+  <div id="footer"></div>
+  </div>
+  <script>
+    $("#header").load("https://alexporf.chiploop.net/head/en-header.html");
+    $("#footer").load("https://alexporf.chiploop.net/footer/en-footer.html");
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+.mid-sub-block-img{
+    width: 40%;
+    height: 20vh;
+}
+.mid-sub-block-img > img{
+    object-fit: cover;
+    border-radius: 0.5vh;
+    height: 100%;
+}

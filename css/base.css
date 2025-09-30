@@ -11,13 +11,14 @@ html, body {
     min-height: 100%;
 }
 .main {
+
+    z-index: 1;
     padding-bottom: 25px;
     height: auto;
-    padding-top: 70px;
+    padding-top: 7vh;
 }
 .main-text {
     text-align: center;
-    margin-top: 70px;
 }
 .footer {
     width: 100%;
@@ -101,8 +102,6 @@ html, body {
 .time {
     font-family: STKaiti;
     font-size: 5vw;
-}
-.main-block{
 }
 .text {
     font-family: STKaiti;

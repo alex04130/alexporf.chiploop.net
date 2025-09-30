@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>2024 UMN BBE1002</title>
+  <link type="text/css" rel="stylesheet" href="https://alexporf.chiploop.net/css/nav.css" />
+  <link type="text/css" rel="stylesheet" href="https://alexporf.chiploop.net/css/base.css" />
+  <link type="text/css" rel="stylesheet" href="https://alexporf.chiploop.net/css/math.css" />
+  <link type="text/css" rel="stylesheet" href="https://alexporf.chiploop.net/font/font.css" />
+  <script>
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    async function myFunction() {
+      await sleep(200);
+      nav.style.visibility = 'visible'
+      nav.style.height = '7%'
+      nav.style.opacity = 1
+      main.style.visibility = 'visible'
+      main.style.paddingTop = '7vh'
+      main.style.opacity = 1
+    }
+    onload = myFunction;
+  </script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [
+          ["$", "$"],
+          ["\\(", "\\)"],
+        ],
+      },
+      svg: {
+        fontCache: "global",
+      },
+    };
+
+    function anchorJump(which) {
+      let id = "#" + which; // 给id加上井号
+      // 给对应dom滚动到对应锚点，使之出现在视图中
+      document.querySelector(id).scrollIntoView({
+        behavior: "smooth", // 定义过渡动画 instant立刻跳过去 smooth平滑过渡过去
+        block: "center", // 定义垂直滚动方向的对齐 start顶部（尽可能）  center中间（尽可能）  end（底部）
+        inline: "center", // 定义水平滚动方向的对齐
+      });
+    }
+    function toTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+        block: "start",
+        inline: "center",
+      })
+    }
+  </script>
+  <script src="https://alexporf.chiploop.net/js/jquery-3.6.0.min.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <link rel="shortcut icon" href="https://alexporf.chiploop.net/images/chiploop tech-logo512.png" width="10"
+    height="10" />
+  <style>
+    .nav-maindiv-title {
+      height: 0;
+      transition: opacity 0.6s, visibility 0.2s, all 0.5s;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .main {
+      padding-top: 0;
+      transition: opacity 0.6s, visibility 0.2s, all 0.5s;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    img {
+      min-width: 0;
+      max-height: 30vh;
+      flex-shrink: 1;
+      flex-grow: 1;
+      min-height: 0;
+      object-fit: contain;
+    }
+
+    p {
+      font-size: 1.2rem;
+      font-family: "Times New Roman", Times, serif;
+      text-indent: 2.4rem;
+    }
+
+    .QuoLink {
+      background-color: transparent;
+      text-decoration: none;
+      font-family: SmileySans;
+      text-align: center;
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: black;
+      background-image: url(https://alexporf.chiploop.net/images/external-link.png);
+      background-position: center right;
+      background-repeat: no-repeat;
+      padding-right: 1.2rem;
+      background-size: 1.2rem;
+      display: inline;
+    }
+
+    .QuoLink:hover {
+      cursor: pointer;
+      color: #315efc;
+    }
+
+    .goTop {
+      font-family: SmileySans;
+      width: 0px;
+      height: 0px;
+      background-color: transparent;
+      font-size: 10px;
+      text-align: center;
+      line-height: 25px;
+      color: rgba(31, 31, 31, 0.90);
+
+      position: fixed;
+      bottom: 2vh;
+      right: 2vw;
+
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.6s, visibility 0.2s, all 0.5s;
+
+    }
+
+    .goTop:hover {
+      cursor: pointer;
+    }
+
+    .tb {
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .tb>tbody>tr>td {
+      border-top: 1px solid #987cb9;
+    }
+  </style>
+</head>
+
+<body style="background-color: RGB(242, 251, 255); text-align: center">
+  <div class="all">
+    <div class="goTop" onclick="toTop()">
+      <svg t="1730677339228" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        p-id="1480" width="100%" height="100%">
+        <path
+          d="M76.8 480L499.2 57.6c6.4-6.4 19.2-6.4 25.6 0L947.2 480c6.4 6.4 12.8 6.4 19.2 6.4 6.4 0 12.8 0 19.2-6.4 12.8-12.8 12.8-25.6 0-38.4L556.8 19.2c-25.6-25.6-76.8-25.6-102.4 0L32 441.6c-6.4 6.4-6.4 25.6 0 38.4s32 12.8 44.8 0zM32 672h108.8v345.6H192V672h108.8v-38.4H32zM499.2 627.2c-57.6 0-102.4 19.2-134.4 57.6-32 38.4-51.2 89.6-51.2 147.2 0 57.6 19.2 102.4 51.2 140.8 32 32 76.8 51.2 128 51.2 57.6 0 102.4-19.2 134.4-57.6s51.2-89.6 51.2-147.2c0-57.6-19.2-102.4-51.2-140.8-25.6-38.4-70.4-51.2-128-51.2z m96 313.6c-25.6 25.6-57.6 38.4-96 38.4s-70.4-12.8-96-44.8c-25.6-25.6-38.4-64-38.4-115.2 0-44.8 12.8-83.2 38.4-115.2 25.6-25.6 57.6-44.8 96-44.8s70.4 12.8 96 38.4c25.6 25.6 32 64 32 115.2 0 64-12.8 96-32 128zM960 659.2c-25.6-19.2-57.6-32-96-32H755.2v384h51.2V864h51.2c38.4 0 76.8-12.8 102.4-32 25.6-25.6 38.4-51.2 38.4-89.6 0-32-12.8-64-38.4-83.2z m-38.4 147.2c-12.8 12.8-38.4 19.2-70.4 19.2h-44.8V672h51.2c57.6 0 89.6 25.6 89.6 76.8 0 25.6-12.8 44.8-25.6 57.6z"
+          p-id="1481"></path>
+      </svg>
+    </div>
+    <script>
+      var goTop = document.querySelector('.goTop')
+      window.onscroll = function () {
+        var height = document.documentElement.scrollTop || document.body.scrollTop
+        if (height >= 300) {
+          goTop.style.visibility = 'visible'
+          goTop.style.height = '50px'
+          goTop.style.width = '50px'
+          goTop.style.opacity = 1
+        } else {
+          goTop.style.height = '0px'
+          goTop.style.width = '0px'
+          goTop.style.visibility = 'hidden'
+          goTop.style.opacity = 0
+        }
+      }
+    </script>
+    <div id="header"></div>
+    <div id="main" class="main">
+      <div style="text-align: left; width: 80%; margin-left: 10%;">
+        <h2 style="font-family: SmileySans">Biorenewable Resources</h2>
+        <hr style="text-align: center" width="100%" color="#987cb9" size="3" />
+        <h1 style="
+              text-align: center;
+              font-family: SmileySans;
+              margin-top: 2rem;
+              margin-bottom: 2rem;
+            ">
+          Three Things You Need to Know About Bioproducts
+        </h1>
+        <p style="margin-bottom: 0.5rem">
+          Fermentation is a critical method for the production of Bioproducts. The process of preparing the microbial
+          organism itself, or its direct or secondary metabolites, using the vital activities of microorganisms under
+          aerobic or anaerobic conditions is known as fermentation. Today it is widely used in the food, biological, and
+          chemical industries. With a certain degree of genetic modification, these microorganisms can create all sorts
+          of strange and even completely new substances. Ethanol, biodiesel, etc. are very common among the bioproducts
+          produced by fermentation.
+          <a class="QuoLink" onclick="anchorJump('lesson19')"><i>(lesson19)</i></a>
+        </p>
+        <div style="
+              width: 100%;
+              display: flex;
+              flex-grow: 1;
+              align-items: center;
+              justify-content: center;
+              max-width: 100%;
+            ">
+          <img src="https://cdn.pixabay.com/photo/2017/02/01/10/30/deli-2029484_1280.png" />
+          <img src="https://cdn.pixabay.com/photo/2017/07/31/17/33/bread-2559313_1280.jpg" />
+          <img src="https://cdn.pixabay.com/photo/2017/06/06/00/07/gene-editing-2375732_1280.png" />
+        </div>
+        <p style="margin-bottom: 0.5rem">
+          Before fermentation can take place to make ethanol, we need to convert the raw materials into sugars that
+          enable the yeast to produce ethanol efficiently. These sugars are in turn extracted directly from crops or
+          made through operations such as saccharification of starch.
+          <a class="QuoLink" onclick="anchorJump('Ef')"><i>(Ethanol_fermentation)</i></a>
+        </p>
+        <div style="
+              width: 100%;
+              display: flex;
+              flex-grow: 1;
+              align-items: center;
+              justify-content: center;
+              max-width: 100%;
+            ">
+          <img src="http://1.bp.blogspot.com/-xvWMCAAgjOQ/TiGxhhTzv1I/AAAAAAAAAlY/Fm-VtdL514s/s1600/IMG_1643.JPG" />
+          <img src="https://th.bing.com/th/id/OIP.2MzSVcwAkqJMKFYU2_RPEAAAAA?rs=1&pid=ImgDetMain" />
+          <img src="https://cdn.pixabay.com/photo/2024/08/09/08/16/transparent-8956443_960_720.png" />
+        </div>
+        <p style="margin-bottom: 0.5rem">
+          Of course, the output of the crop is not just starch, but also cellulose. Starch is divided into branched
+          starch and straight chain starch, the difference between these two types of starch is that straight chain
+          starch is a whole chain whereas branched starch has a branch-like structure. Indica rice has less branched
+          starch than Japonica rice, so indica rice is not as sticky as Japonica rice. Another stuff that is also made
+          up of alpha-D-glucose is glycogen, a structure generally used by animals to store sugar. This structure has
+          even more branches than branched starch. Cellulose, which is made from β-D-glucose, is not branched which is
+          like straight-chain starch, but because of the structure of β-D-glucose, every two glucose need to be flipped
+          over to combine so they don't form a helical structure like α-D-glucose does. Cellulose forms hydrogen bonds
+          between them so they are more tightly bound and harder to break apart. This video fits nicely in the section
+          on the difference between α-D-glucose and β-D-glucose because it explains more visually why these two types of
+          glucose polymerize into different structures.<a class="QuoLink"
+            onclick="anchorJump('lesson18')"><i>(lesson18)</i></a></p>
+        <iframe width="100%" height="450vw" src="https://www.youtube.com/embed/jtK2QNIhwFs?si=qjDA4Uq2IkmvN_V-"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <p style="margin-bottom: 0.5rem">
+          Bioplastics, on the other hand, are a type of bioproducts, of which classifications include bio-based
+          plastics, degradable plastics, compostable plastics, and so on. Compostable plastics are very effective in
+          reducing plastic waste in landfills and oceans. Previously, biodegradable plastics required specific bacteria
+          and temperatures to degrade. Compostable plastics, on the other hand, degrade directly in the compost pile,
+          which is more in line with the definition of “biodegradable”. This way, even if people throw away their trash
+          bags, they don't have to deal with the problem of non-degradation. This sounds like a very good plan, but
+          there are still some unanswered questions. For example, the cost of compostable plastics is higher than the
+          cost of biodegradable plastics, which is much higher than regular plastics. Whether merchants and customers
+          are willing to pay that cost is a big question. Even with the push for reusable trash bags, I forget to bring
+          them when I use them in the real world, let alone compostable plastic bags that cost more money each time I
+          buy them. Biodegradable plastics interfere with today's recycling systems for other plastics, so they require
+          special recycling processes and need to be sorted. This is a huge problem, not only economically but also in
+          terms of policy. This type of plastic is a good thing, but there are still many problems and many limitations.
+          <a class="QuoLink" onclick="anchorJump('lesson20')"><i>(lesson20)</i></a>
+        </p>
+        <div style="
+                width: 100%;
+                display: flex;
+                flex-grow: 1;
+                align-items: center;
+                justify-content: center;
+              ">
+          <img src="https://canvas.umn.edu/courses/459407/files/44316802/download?wrap=1" />
+          <img
+            src="https://cdn.shopify.com/s/files/1/0078/1032/files/shutterstock_300375812_2048x2048.jpg?v=1479496497" />
+          <img src="https://cdn.pixabay.com/photo/2013/07/13/13/25/recycling-161011_1280.png" />
+        </div>
+        <p style="margin-bottom: 0.5rem">
+          The idea of bio-based products is a good one, but these products more or less have consequences such as
+          increased costs and increased limitations of use. The pros and cons need to be weighed against their use and
+          adoption by society.</p>
+        <h2 style="margin-top: 10vh;font-family: SmileySans">Reference:</h2>
+        <hr style="text-align: center" width="100%" color="#987cb9" size="3" />
+        <h4 style="margin-bottom: 0.5rem" id="lesson18">
+          Lesson 18, <i>Crops to Sugar</i>, BBE 1002, UMN
+        </h4>
+        <h4 style="margin-bottom: 0.5rem" id="lesson19">
+          Lesson 19, <i>Fermentation</i>, BBE 1002, UMN
+        </h4>
+        <h4 style="margin-bottom: 0.5rem" id="lesson20">
+          Lesson 20, <i>Bioplastics</i>, BBE 1002, UMN
+        </h4>
+        <h4 style="margin-bottom: 0.5rem" id="Ef">
+          wikiwand
+          <i>Ethanol fermentation</i>
+          <a target="_blank" class="QuoLink"
+            href="https://www.wikiwand.com/en/articles/Ethanol_fermentation">https://www.wikiwand.com/en/articles/Ethanol_fermentation</a>
+        </h4>
+        <h4 style="margin-bottom: 0.5rem">
+          images
+          <a target="_blank" class="QuoLink" href="https://pixabay.com/">https://pixabay.com/</a>
+        </h4>
+      </div>
+      <div style="height: 50vh;width: 100%;"></div>
+    </div>
+
+  </div>
+  </div>
+  </div>
+  <div id="footer"></div>
+  </div>
+  <script>
+    $("#header").load("https://alexporf.chiploop.net/head/en-header.html");
+    $("#footer").load("https://alexporf.chiploop.net/footer/en-footer.html");
+  </script>
+</body>
+
+</html>

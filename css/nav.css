@@ -1,6 +1,7 @@
 .nav-maindiv-title{
+    z-index: 999;
     position: fixed;
-    background-color: rgba(229,244,253,0.90);
+    background-color: #e7f5fd;
     height: 7%;
     width: 100%;
     padding: 0px;
